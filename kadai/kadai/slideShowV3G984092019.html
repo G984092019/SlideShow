@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>スライドショー</title>
+    <link rel="stylesheet" href="css/slideShowV3.css">
+  </head>
+  <body>
+    <div class="title">
+      歴代総長スライドショー
+    </div>
+    <div class="main">
+      <button type="button" id="prev" onclick="left()"><</button>
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_01.jpg">
+      <button type="button" id="next" onclick="right()">></button>
+    </div>
+    <div class="control">
+      <button type="button" onclick="play()">再生</button>
+      <button type="button" onclick="stop()">停止</button>
+      <button type="button" onclick="reset()">リセット</button>
+    </div>
+    <div class="thumbnails">
+      <img class="selected" src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_01.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_02.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_03.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_04.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_05.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_06.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_07.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_08.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_09.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_10.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_11.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_12.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_13.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_14.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_15.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_16.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_17.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_18.jpg">
+      <img src="https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_19.jpg">
+    </div>
+    <script>
+    let count = 1;
+    let URL;
+    let thumbnailsElement = document.querySelector("div.thumbnails");
+    let mainElement = document.querySelector("div.main>img");
+    let nowPlaying = false;
+    let timer;
+
+
+    function left() {
+      count = count - 1;
+      if (count == 0) {
+        count = 19;
+        thumbnailsElement.children[0].classList.remove('selected');
+      }else {
+      thumbnailsElement.children[count].classList.remove('selected');
+      }
+      if(count <= 9) {
+        URL = "https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_0" + count + ".jpg";
+      } else {
+        URL = "https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_" + count + ".jpg";
+      }
+      mainElement.setAttribute('src', URL);
+      thumbnailsElement.children[count-1].classList.add('selected');
+    }
+
+    function right() {
+      count = count + 1;
+      if (count == 20) {
+        count = 1;
+        thumbnailsElement.children[18].classList.remove('selected');
+      }else {
+      thumbnailsElement.children[count-2].classList.remove('selected');
+      }
+      if(count <= 9) {
+        URL = "https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_0" + count + ".jpg";
+      } else {
+        URL = "https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_" + count + ".jpg";
+      }
+      mainElement.setAttribute('src', URL);
+      thumbnailsElement.children[count-1].classList.add('selected');
+    }
+
+    function play() {
+      console.log(!nowPlaying);
+      if (!nowPlaying) {
+        nowPlaying = true;
+        autoPlay();
+      }
+    }
+
+    function autoPlay() {
+      timer = setTimeout(function(){ autoPlay(); }, 1000);
+      right();
+    }
+
+    function stop() {
+      clearTimeout(timer);
+      nowPlaying = false;
+    }
+
+    function reset() {
+      stop();
+      thumbnailsElement.children[count-1].classList.remove('selected');
+      URL = "https://www.takushoku-u.ac.jp/summary/images/summary_successive-chancellor_img_01.jpg";
+      count = 1;
+      thumbnailsElement.children[count-1].classList.add('selected');
+      mainElement.setAttribute('src',URL);
+    }
+    </script>
+  </body>
+</html>
