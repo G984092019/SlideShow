@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>属性の追加・削除の練習</title>
+    <style>
+      .faculty {
+        background-color: silver;
+      }
+      .graduateSchool {
+        background-color: gray;
+      }
+      .orange {
+        color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    色付け
+    <button onclick="colorOn()">ON</button>
+    <button onclick="colorOff()">OFF</button>
+    <div class="faculty">
+      <div class="engineering" id="ms">機械システム工学科</div>
+      <div class="engineering" id="es">電子システム工学科</div>
+      <div class="engineering" id="cs">情報工学科</div>
+      <div class="engineering" id="ld">デザイン学科</div>
+    </div>
+    <div class="graduateSchool">
+      <div class="engineering">機械・電子システム専攻</div>
+      <div class="engineering">情報・デザイン工学専攻</div>
+    </div>
+    <script>
+      const facultyElement = document.querySelector("div.faculty");
+      const gradElement = document.querySelectorAll("div.engineering");
+
+      function colorOn() {
+        facultyElement.children[2].classList.add("orange");
+        gradElement[5].classList.add("orange");
+        // let cs = document.getElementById("cs");
+        // cs.classList.add("orange");
+      }
+      function colorOff() {
+        let cs = document.getElementById("cs");
+        cs.classList.remove("orange");
+      }
+    </script>
+  </body>
+</html>

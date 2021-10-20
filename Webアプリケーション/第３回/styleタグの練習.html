@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>styleタグの練習</title>
+    <style>
+    p {
+      opacity: 0.5;/*透明度*/
+      text-shadow: 1px 1px 2px pink;/*影*/
+    }
+    p:hover { /*マウスをかざすと透明度が変わる*/
+      opacity: 1.0;
+    }
+    </style>
+  </head>
+  <body>
+    ダミー、ダミー、ダミー
+    <div>
+      <h1>記事見出し</h1>
+      <p>記事1 これは記事１の内容です。<br>改行したりして</p>
+      <p>記事2</p>
+      <p>記事3</p>
+      <p>記事4</p>
+      <p>記事5</p>
+      <p>記事6</p>
+      <p>記事7</p>
+      <p>記事8</p>
+      <p>記事9</p>
+      <p>記事10</p>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+<!--
+p {
+  color: red;
+  background-color: silver;
+  /* width: 300px; */
+  /* height: 150px; */
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in;
+  text-align: center;
+  margin: 0 auto;/*上下 左右、pの外側*/
+  /* padding-top: 20px;//pの内側
+  padding-left: 20px; */
+}
+p:hover {
+  width: 200px;/*マウスをかざすと横200になる*/
+}
+p:nth-child(3n+1) {
+  /*pの奇数(odd)、偶数(even)、指定した数字の行が変わる */
+  /*2n+1 → １は最初の行を表す。*/
+  /*子要素にh1も含まれる。h１がpだったら変化が出る。*/
+  color: blue;
+}
+p:last-child { /*pの一番最後のが変わる*/
+  color: green;
+}
+p:nth-of-type(3n+1) { /*これはh１は含まれない*/
+  color: yellow;
+}
+-->

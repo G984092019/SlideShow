@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScriptの練習</title>
+  </head>
+  <body>
+    <input type="text" id="name">
+    <button onclick="hi()">起動！</button>
+    <script>
+    function hi() {
+      const message = "Hello.";
+      const text = document.getElementById("name");
+      let name = text.value;
+      alert(message + name);
+    }
+    </script>
+  </body>
+</html>

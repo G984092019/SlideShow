@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>setTimeout()の練習</title>
+  </head>
+  <body>
+    <button onclick="start()">Start!</button>
+    <button onclick="stop()">Stop!</button>
+
+    <script>
+    let id;
+    let nowPlaying = false;
+
+    function start() {
+      console.log(!nowPlaying);
+      //if (nowPlaying == false) {
+      //if (nowPlaying != true) {
+      if (!nowPlaying) {
+        nowPlaying = true;
+        autoPlay();
+      }
+    }
+
+    function autoPlay() {
+      console.log("setTimeout()関数の練習");
+      id = setTimeout(function(){ autoPlay(); }, 1000); //（やること{}、時間ms）
+    }
+
+    function stop() {
+      clearTimeout(id);
+      nowPlaying = false;
+    }
+    </script>
+  </body>
+</html>
